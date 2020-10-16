@@ -1,0 +1,27 @@
+{
+  "learnMoreLink": "https://www.baidu.com",
+  "navigationbar": [
+    {
+      "code": "1001",
+      "name": "腾讯公司",
+      "link": "http://www.tencent.com/zh-cn/index.shtml"
+    },
+    {
+      "code": "1002",
+      "name": "版权所有",
+      "link": "http://www.tencent.com/zh-cn/le/copyrightstatement.shtml"
+    },
+    {
+      "code": "1003",
+      "name": "市场合作",
+      "link": "http://guanjia.qq.com/market.html"
+    },
+    {
+      "code": "1004",
+      "name": "关于管家",
+      "link": "http://guanjia.qq.com/about/about.html"
+    }
+  ],
+  "copyright": "Copyright © 1995 - 2020 OSND. All Rights Reserved.",
+  "switchTime": 60000
+}
