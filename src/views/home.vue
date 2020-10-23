@@ -69,11 +69,15 @@
     padding: 0px;
 
     .tags-view {
-      height: 25px;
+      height: 40px;
       border-bottom: solid 1px #ccc;
       padding: 2px 5px;
+      display: flex;
+      align-items: center;
 
       .el-tag {
+        height: 32px;
+        line-height: 32px;
         cursor: pointer;
         margin-right: 5px;
         float: left;
@@ -84,7 +88,7 @@
     }
 
     .main-router-container {
-      height: calc(100% - 30px);
+      height: calc(100% - 45px);
     }
   }
 }
@@ -231,8 +235,8 @@ export default {
         {
           id: '4',
           icon: 'el-icon-setting',
-          name: '导航四',
-          path: '/home/reward-module',
+          name: 'canvas学习',
+          path: '/home/canvas-module',
           children: []
         }
       ], // 菜单数据源
@@ -247,12 +251,12 @@ export default {
   },
   methods: {
     itemClick(item, addTag = true) {
-      if (addTag) this.addTag(item)
-      this.currentMenu = item
-      if (this.currentMenu.path) {
+      if (item.path) {
+        this.currentMenu = item
+        if (addTag) this.addTag(item)
         this.$push(this.currentMenu.path)
       } else {
-        console.log(this.currentMenu.name, '此菜单配置错误！！未设置访问路径')
+        console.log(item.name, '此菜单配置错误！！未设置访问路径')
       }
     },
     addTag(item) {

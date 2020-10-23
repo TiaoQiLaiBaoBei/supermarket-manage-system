@@ -70,12 +70,12 @@ const routes = [
     },
     children: [
       {
-        path: 'reward-module',
-        name: 'reward-module',
-        component: () => import(/* webpackChunkName: "reward-module" */ '../views/home-page/reward-module.vue'),
+        path: 'canvas-module',
+        name: 'canvas-module',
+        component: () => import(/* webpackChunkName: "reward-module" */ '../views/home-page/canvas-module.vue'),
         meta: {
           keepAlive: true,
-          title: '管理界面一'
+          title: 'canvas学习界面'
         }
       },
       {
