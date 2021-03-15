@@ -250,7 +250,7 @@
 <script>
 // import * as util from '../plugins/utils/getBankBinUtil' 以util.getBankBinAll()使用
 // getBankBinAll('6222005865412565805', data => {})
-import { getArrayRandom } from '../plugins/utils/customUtil'
+import { getArrayRandom, digitUppercase } from '../plugins/utils/customUtil'
 import login from './login.vue'
 
 export default {
@@ -291,6 +291,7 @@ export default {
       setTimeout(this.getURL, this.$parameter.switchTime)
     },
     initialization() {
+      console.log(digitUppercase('00203.067.7'))
       this.getURL()
     }
   },

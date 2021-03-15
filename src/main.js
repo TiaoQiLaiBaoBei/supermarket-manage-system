@@ -29,7 +29,7 @@ import App from './App.vue'
 // 引入element size 字段：规定组件的大小 zIndex 字段：规定弹出框的初始值，默认2000
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 // 引入自定义插件：包含了axios
-Vue.use(Greatsoft, store)
+Vue.use(Greatsoft)
 // 引入编码但不渲染的标签
 Vue.use(Fragment.Plugin)
 

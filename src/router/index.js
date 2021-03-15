@@ -12,20 +12,11 @@ const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
+
 // 要告诉 vue 使用 vueRouter
 Vue.use(VueRouter)
 
 const routes = [
-  // 错误界面
-  {
-    path: '*',
-    name: '404',
-    component: NotFoundComponent,
-    meta: {
-      keepAlive: false,
-      title: '404~'
-    }
-  },
   // 网站首页
   {
     path: '/',
@@ -86,8 +77,27 @@ const routes = [
           keepAlive: true,
           title: '管理界面二'
         }
+      },
+      {
+        path: '404',
+        name: 'Page404',
+        component: () => import(/* webpackChunkName: "reward-module" */ '@/views/error-page/404.vue'),
+        meta: {
+          keepAlive: false,
+          title: '错误界面'
+        }
       }
     ]
+  },
+  // 错误界面必须放在末尾
+  {
+    path: '*',
+    name: '404',
+    component: NotFoundComponent,
+    meta: {
+      keepAlive: false,
+      title: '404~'
+    }
   }
 ]
 

@@ -198,8 +198,8 @@ export default {
               name: 'Menu',
               path: '/mian/menu',
               children: [
-                { id: '1-1-1', icon: 'el-icon-location', name: 'Menu', path: '/home/menu' },
-                { id: '1-1-2', icon: 'el-icon-location', name: 'Home', path: '/home/home' },
+                { id: '1-1-1', icon: 'el-icon-location', name: 'Menu', path: '/home/404' },
+                { id: '1-1-2', icon: 'el-icon-location', name: 'Home', path: '/home/404' },
                 { id: '1-1-3', icon: 'el-icon-location', name: 'Table', path: '/home/table' }
               ]
             },

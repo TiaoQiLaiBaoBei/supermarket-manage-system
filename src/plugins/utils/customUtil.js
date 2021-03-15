@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-restricted-properties */
 /* eslint-disable radix */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable prefer-rest-params */
@@ -56,9 +58,69 @@ export function getArrayRandom(array, callback) {
   }
   console.log('请传入数组')
 }
-
 /**
- * 随机返回一个数组中的某一值。
+ * @description: 数字转换大写金额
+ * @param {Number} 需要转换的数字
+ * @param {Object} callback 默认的返回函数,可以为空。
+ * @return {String} 大写金额例如：柒仟陆佰捌拾贰元壹分
+ * @author: weiwei
+ * @date: 2020-10-26 15:15:45
+ * @version: V1.0.0
+ */
+export function digitUppercase(arabic, callback) {
+  const numList = [620, 300, 200, 300, 500, 100]
+  for (let j = 0; j < numList.length - 1; j++) {
+    for (let i = 0; i < numList.length - 1 - j; i++) {
+      if (numList[i] > numList[i + 1]) {
+        const temp = numList[i]
+        numList[i] = numList[i + 1]
+        numList[i + 1] = temp
+      }
+    }
+  }
+  console.log(numList)
+  const fraction = ['角', '分']
+  const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
+  const unit = [
+    ['元', '万', '亿'],
+    ['', '拾', '佰', '仟']
+  ]
+  const head = arabic < 0 ? '欠' : ''
+  // 函数用于返回数字的绝对值
+  // Math.abs(true)——1,(false——0)
+  // Math.abs("张三")——NaN Math.abs("1")——1
+  arabic = Math.abs(arabic)
+  if (isNaN(arabic)) return '请输入数字!'
+  // Number.MAX_SAFE_INTEGER最大和最小安全值Number.MIN_SAFE_INTEGER
+  if (arabic > Number.MAX_SAFE_INTEGER) return '数字太大，无法转换!'
+  // Math.pow()函数用于返回一个数的指定次幂
+  // Math.floor()函数用于返回小于或等于指定数字的最大整数，一般称为向下取整。
+  // replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+  // --将零的值去掉去掉。小数位的转换
+  let s = ''
+  for (let i = 0; i < fraction.length; i++) {
+    s += (digit[Math.floor(arabic * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '')
+  }
+  s = s || '整'
+  arabic = Math.floor(arabic)
+  for (let i = 0; i < unit[0].length && arabic > 0; i++) {
+    let p = ''
+    for (let j = 0; j < unit[1].length && arabic > 0; j++) {
+      p = digit[arabic % 10] + unit[1][j] + p
+      arabic = Math.floor(arabic / 10)
+    }
+    s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s
+  }
+  return (
+    head +
+    s
+      .replace(/(零.)*零元/, '元')
+      .replace(/(零.)+/g, '零')
+      .replace(/^整$/, '零元整')
+  )
+}
+/**
+ * 日期转换农历。
  *
  * @param {String} date 日期
  * @param {*} callback
@@ -294,5 +356,6 @@ export function lunarCalendar(date, callback) {
 // 以对象形式导出，最终以对象.方法进行使用
 export default {
   getBankBinAll,
-  getArrayRandom
+  getArrayRandom,
+  digitUppercase
 }
